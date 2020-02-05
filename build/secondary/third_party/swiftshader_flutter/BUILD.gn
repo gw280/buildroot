@@ -115,6 +115,9 @@ source_set("subzero") {
   } else if (is_fuchsia) {
     include_dirs +=
         [ "$source_root/third_party/llvm-subzero/build/Fuchsia/include" ]
+  } else if (is_android) {
+    include_dirs +=
+        [ "$source_root/third_party/llvm-subzero/build/Android/include" ]
   } else {
     assert(false, "Unsupported platform.")
   }
