@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-if (is_mac) {
+if (is_mac || is_ios) {
   import("//build/config/ios/ios_sdk.gni") # For use_ios_simulator
 }
 
@@ -32,7 +32,7 @@ declare_args() {
   # assembly sources. https://github.com/flutter/flutter/issues/39281
   # TODO(gw280): Once our own copy of clang 12 is capable of building for arm64 simulator,
   # we can safely remove the requirement that we use xcode for arm64 simulator builds.
-  if (is_mac) {
+  if (is_mac || is_ios) {
     use_xcode = enable_bitcode || (use_ios_simulator && (target_cpu == "arm" || target_cpu == "arm64"))
   } else {
     use_xcode = false
